@@ -1,6 +1,5 @@
 from urllib.parse import urlparse
 from flask import request, jsonify, abort
-
 from app import app
 
 

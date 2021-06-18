@@ -1,15 +1,18 @@
-import sqlalchemy as sa
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from app import sqlalchemy as sa
 
-SQLAlchemyBase = declarative_base()
-engine = sa.create_engine("sqlite:///sqlite.db", echo=False)
-Session = sessionmaker(bind=engine)
+"""
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/
+"""
+
+class User(sa.Model):
+    id = sa.Column(sa.Integer, primary_key=True)
+    username = sa.Column(sa.String(80), unique=True, nullable=False)
+    email = sa.Column(sa.String(120), unique=True)
+    first_name = sa.Column(sa.String(80))
+    last_name = sa.Column(sa.String(80))
+
+    def __repr__(self):
+        return '<User %r>' % self.username
 
 
-class Table(SQLAlchemyBase):
-    __tablename__ = 'Examples'
-    example_id = sa.Column(sa.String(8), primary_key=True)
-
-
-SQLAlchemyBase.metadata.create_all(engine)
+sa.create_all()
