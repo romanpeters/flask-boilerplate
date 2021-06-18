@@ -6,4 +6,4 @@ app = Flask(__name__)
 app.secret_key = secrets.token_urlsafe()
 bootstrap = Bootstrap(app)
 
-from app import views, api
+from app import views, api, errors
