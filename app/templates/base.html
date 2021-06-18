@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <title>Sportschool</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css')}}">
+    <script src="{{url_for('static', filename='scripts.js')}}"></script>
+
+    {{ bootstrap.load_css() }}
+
+
+</head>
+
+<body>
+{{ bootstrap.load_js() }}
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+{% block content %}{% endblock %}
+</body>
+</html>
