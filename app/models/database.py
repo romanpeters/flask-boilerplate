@@ -1,13 +1,12 @@
+import os
 from app import sqlalchemy as sa
 from app import login_manager as lm
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-
 """
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/
 """
-
 
 class User(sa.Model, UserMixin):
     id = sa.Column(sa.Integer, primary_key=True)
@@ -31,4 +30,3 @@ class User(sa.Model, UserMixin):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-sa.create_all()

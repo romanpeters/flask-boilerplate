@@ -9,7 +9,6 @@ def endpoints():
     return jsonify({'endpoints': endpoints})
 
 
-
 endpoints = [{"path": "/api/",
               "name": endpoints.__name__,
               "method": "GET",
