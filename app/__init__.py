@@ -13,11 +13,10 @@ app = Flask(__name__)
 
 with app.app_context():
     app.secret_key = secrets.token_urlsafe()
-
+    bootstrap = Bootstrap5(app)
 ## uncomment for database + account management
 #    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite+pysqlite:///sqlite.db'
 #    sqlalchemy = SQLAlchemy(app)
-#    bootstrap = Bootstrap5(app)
 #    login_manager.init_app(app)
 
 from app import views, api, errors
