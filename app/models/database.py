@@ -8,6 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/
 """
 
+
 class User(sa.Model, UserMixin):
     id = sa.Column(sa.Integer, primary_key=True)
     username = sa.Column(sa.String(80), unique=True, nullable=False)
@@ -23,10 +24,9 @@ class User(sa.Model, UserMixin):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return "<User %r>" % self.username
 
 
 @lm.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
